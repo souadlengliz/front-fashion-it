@@ -1,0 +1,52 @@
+<div class="content">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Create An Event</h4>
+        </div>
+        <div class="card-body">
+          <form action="#">
+            <label> Name </label>
+            <div class="form-group">
+              <input class="form-control" [formControl]="name" type="text" />
+            </div>
+            <label> Description </label>
+            <div class="form-group">
+              <input
+                class="form-control"
+                [formControl]="description"
+                type="text"
+              />
+            </div>
+            <label> Date </label>
+            <div class="form-group">
+              <input class="form-control" [formControl]="date" type="date" />
+            </div>
+            <label> Location </label>
+            <div class="form-group">
+              <input
+                class="form-control"
+                [formControl]="location"
+                type="text"
+              />
+            </div>
+            <label> number of seats </label>
+            <div class="form-group">
+              <input class="form-control" [formControl]="seats" type="text" />
+            </div>
+          </form>
+        </div>
+        <div class="card-footer">
+          <button
+            class="btn btn-fill btn-primary"
+            type="submit"
+            (click)="submitEvent()"
+          >
+            Submit
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

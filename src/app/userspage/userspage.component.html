@@ -1,0 +1,51 @@
+<div class="content">
+  <div class="row">
+    <div class="col-md-12 mb-5">
+      <div class="card card-plain">
+        <div class="card-header">
+          <h4 class="card-title">Users list</h4>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table tablesorter" id="simple-table">
+                <thead class="text-primary">
+                  <tr>
+                    <th>Name</th>
+                    <th class="text-center">email</th>
+                    <th>role</th>
+                    <th class="text-right">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of items">
+                    <td>{{ item.name }}</td>
+                    <td class="text-center">{{ item.email }}</td>
+                    <td>{{ item.role }}</td>
+                    <td class="text-right">
+                      <!-- <button
+                          class="btn btn-success btn-link btn-sm btn-icon"
+                          tooltip="Refresh"
+                          type="button"
+                        >
+                          <i class="tim-icons icon-refresh-01"> </i>
+                        </button> -->
+                      <button
+                        class="btn btn-danger btn-link btn-sm"
+                        tooltip="Delete"
+                        (click)="delete(item._id)"
+                        type="button"
+                      >
+                        <i class="tim-icons icon-simple-remove"> </i>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
