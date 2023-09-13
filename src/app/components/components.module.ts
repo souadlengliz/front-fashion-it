@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { RouterModule } from "@angular/router";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { CollapseModule } from "ngx-bootstrap/collapse";
 import { BsDropdownModule } from "ngx-bootstrap/dropdown";
@@ -29,7 +29,8 @@ import { FixedPluginComponent } from "./fixed-plugin/fixed-plugin.component";
     DxVectorMapModule,
     CollapseModule.forRoot(),
     BsDropdownModule.forRoot(),
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    ReactiveFormsModule,
   ],
   declarations: [
     FooterComponent,
@@ -40,7 +41,7 @@ import { FixedPluginComponent } from "./fixed-plugin/fixed-plugin.component";
     AuthNavbarComponent,
     RtlNavbarComponent,
     RtlSidebarComponent,
-    FixedPluginComponent
+    FixedPluginComponent,
   ],
   exports: [
     FooterComponent,
@@ -51,7 +52,7 @@ import { FixedPluginComponent } from "./fixed-plugin/fixed-plugin.component";
     AuthNavbarComponent,
     RtlNavbarComponent,
     RtlSidebarComponent,
-    FixedPluginComponent
-  ]
+    FixedPluginComponent,
+  ],
 })
 export class ComponentsModule {}

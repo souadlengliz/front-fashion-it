@@ -1,6 +1,8 @@
 import { Component, OnInit, ChangeDetectorRef } from "@angular/core";
 import { EventService } from "../services/event.service";
 import { Event } from "../models/event";
+import { ActivatedRoute } from "@angular/router";
+import { Subscription } from "rxjs";
 
 @Component({
   selector: "app-events-page",
@@ -8,28 +10,48 @@ import { Event } from "../models/event";
   styleUrls: ["./events-page.component.scss"],
 })
 export class EventsPageComponent implements OnInit {
+  private queryParamsSubscription: Subscription;
+
   constructor(
     private eventsService: EventService,
-    private change: ChangeDetectorRef
-  ) {}
+    private change: ChangeDetectorRef,
+    private router: ActivatedRoute
+  ) {
+    this.queryParamsSubscription = this.router.queryParams.subscribe(
+      (queryParams) => {
+        // Perform actions when query parameters change
+        console.log("Query parameters have changed:", queryParams);
+        if (queryParams["query"])
+          this.eventsService
+            .searchEvents(queryParams["query"])
+            .subscribe((data) => {
+              console.log(data);
+              this.items = data;
+            });
+        else
+          this.eventsService.getAllEvents().subscribe((data) => {
+            console.log(data);
+            this.items = data;
+          });
+      }
+    );
+  }
   items: Event[] = [];
   ngOnInit(): void {
     this.refresh();
   }
+  //function to detect whenever a query is sent as a parameter to the route and then search for it
+
   delete(id) {
     this.eventsService.deleteEvent(id);
     this.refresh();
     this.change.detectChanges();
   }
   async refresh() {
+    console.log("refreshing");
     await delay(1000);
-    this.eventsService.getAllEvents().subscribe((data) => {
-      console.log(data);
-      this.items = data;
-    });
   }
 }
-
 function delay(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }

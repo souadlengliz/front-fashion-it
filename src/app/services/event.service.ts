@@ -8,6 +8,13 @@ import { Event } from "../models/event";
 export class EventService {
   constructor(private http: HttpClient) {}
 
+  searchEvents(query) {
+    console.log(query);
+    return this.http.get<Event[]>(
+      "http://localhost:3000/event/search/" + query
+    );
+  }
+
   addEvent(event) {
     this.http.post("http://localhost:3000/event", event).subscribe((data) => {
       console.log(data);
