@@ -24,6 +24,8 @@ export class EventFormComponent implements OnInit {
       location: this.location.value,
       seats: this.seats.value,
       availableSeats: this.seats.value,
+      imageUrl:
+        "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/fecc5355960773.599ae10bcdd0b.jpg",
     };
     this.eventService.addEvent(event);
     this.router.navigate(["/eventspage"]);

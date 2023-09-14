@@ -41,6 +41,7 @@
     "ngx-bootstrap": "8.0.0",
     "ngx-chips": "2.2.2",
     "ngx-toastr": "14.2.3",
+    "ngx-webstorage-service": "^5.0.0",
     "nouislider": "14.6.3",
     "perfect-scrollbar": "1.5.5",
     "rxjs": "^6.5.4",

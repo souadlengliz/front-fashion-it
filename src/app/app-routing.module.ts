@@ -11,6 +11,7 @@ import { EventsPageComponent } from "./events-page/events-page.component";
 import { EventFormComponent } from "./event-form/event-form.component";
 import { UserspageComponent } from "./userspage/userspage.component";
 import { RegisterPageComponent } from "./register-page/register-page.component";
+import { HomepageComponent } from "./homepage/homepage.component";
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
   {
     path: "loginpage",
     component: LoginPageComponent,
+  },
+  {
+    path: "homepage",
+    component: HomepageComponent,
   },
 
   {

@@ -27,4 +27,9 @@ export class UserserviceService {
       .delete("http://localhost:3000/user/" + id)
       .subscribe((data) => {});
   }
+  public login(username, password) {
+    return this.http.get<users>(
+      "http://localhost:3000/login/" + username + "/" + password
+    );
+  }
 }

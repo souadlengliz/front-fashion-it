@@ -21,10 +21,11 @@
                 </div>
                 <input
                   class="form-control"
-                  placeholder="Email"
+                  placeholder="username"
                   type="text"
                   (blur)="focus = false"
                   (focus)="focus = true"
+                  [formControl]="username"
                 />
               </div>
               <div
@@ -42,16 +43,20 @@
                   type="text"
                   (blur)="focus1 = false"
                   (focus)="focus1 = true"
+                  [formControl]="password"
                 />
               </div>
             </div>
             <div class="card-footer">
-              <a class="btn btn-primary btn-lg btn-block mb-3" href="#pablo">
+              <a
+                class="btn btn-primary btn-lg btn-block mb-3"
+                (click)="login()"
+              >
                 login
               </a>
               <div class="pull-left">
                 <h6>
-                  <a class="link footer-link" [routerLink]="['/loginpage']">
+                  <a class="link footer-link" [routerLink]="['/registerpage']">
                     Create Account
                   </a>
                 </h6>

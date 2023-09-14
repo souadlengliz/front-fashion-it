@@ -1,6 +1,6 @@
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgModule } from "@angular/core";
-import { ReactiveFormsModule,FormsModule } from "@angular/forms";
+import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
 import { CommonModule } from "@angular/common";
 import { ToastrModule } from "ngx-toastr";
@@ -12,14 +12,14 @@ import { AuthLayoutComponent } from "./layouts/auth-layout/auth-layout.component
 import { AppRoutingModule } from "./app-routing.module";
 import { ComponentsModule } from "./components/components.module";
 import { RtlLayoutComponent } from "./layouts/rtl-layout/rtl-layout.component";
-import { LoginPageComponent } from './login-page/login-page.component';
-import { RegisterPageComponent } from './register-page/register-page.component';
-import { EventsPageComponent } from './events-page/events-page.component';
+import { LoginPageComponent } from "./login-page/login-page.component";
+import { RegisterPageComponent } from "./register-page/register-page.component";
+import { EventsPageComponent } from "./events-page/events-page.component";
 
-import {HttpClientModule} from '@angular/common/http';
-import { EventFormComponent } from './event-form/event-form.component';
-import { UserspageComponent } from './userspage/userspage.component';
-
+import { HttpClientModule } from "@angular/common/http";
+import { EventFormComponent } from "./event-form/event-form.component";
+import { UserspageComponent } from "./userspage/userspage.component";
+import { HomepageComponent } from "./homepage/homepage.component";
 
 @NgModule({
   declarations: [
@@ -31,7 +31,8 @@ import { UserspageComponent } from './userspage/userspage.component';
     RegisterPageComponent,
     EventsPageComponent,
     EventFormComponent,
-    UserspageComponent
+    UserspageComponent,
+    HomepageComponent,
   ],
   imports: [
     CommonModule,
@@ -42,9 +43,9 @@ import { UserspageComponent } from './userspage/userspage.component';
     ToastrModule.forRoot(),
     ComponentsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
