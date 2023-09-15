@@ -101,7 +101,22 @@ export const ROUTES: RouteInfo[] = [
     ],
   },
 ];
-
+export const ROUTES2: RouteInfo[] = [
+  {
+    path: "/homepage",
+    title: "Event catalog",
+    type: "link",
+    icontype: "tim-icons icon-chart-pie-36",
+    rtlTitle: "لوحة القيادة",
+  },
+  {
+    path: "/bookings",
+    title: "My bookings",
+    type: "link",
+    icontype: "tim-icons icon-chart-pie-36",
+    rtlTitle: "view bookings",
+  },
+];
 @Component({
   selector: "app-sidebar",
   templateUrl: "./sidebar.component.html",
@@ -113,6 +128,10 @@ export class SidebarComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    this.menuItems = ROUTES.filter((menuItem) => menuItem);
+    if (localStorage.getItem("role") === "admin") {
+      this.menuItems = ROUTES.filter((menuItem) => menuItem);
+    } else {
+      this.menuItems = ROUTES2.filter((menuItem) => menuItem);
+    }
   }
 }

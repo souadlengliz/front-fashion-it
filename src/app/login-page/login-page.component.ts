@@ -35,6 +35,7 @@ export class LoginPageComponent implements OnInit, OnDestroy {
       .subscribe((user) => {
         if (user) {
           localStorage.setItem("userId", user._id);
+          localStorage.setItem("role", user.role);
           this.router.navigate(["/homepage"]);
         } else {
           this.toastr.error("Invalid Credentials");

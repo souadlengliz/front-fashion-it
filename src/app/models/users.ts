@@ -4,4 +4,5 @@ export class users {
   public username: String;
   public password: String;
   public email: String;
+  public role: string;
 }
