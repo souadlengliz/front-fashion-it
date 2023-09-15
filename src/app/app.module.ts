@@ -21,6 +21,7 @@ import { EventFormComponent } from "./event-form/event-form.component";
 import { UserspageComponent } from "./userspage/userspage.component";
 import { HomepageComponent } from "./homepage/homepage.component";
 import { BookedEventsComponent } from "./booked-events/booked-events.component";
+import { BookingFormComponent } from './booking-form/booking-form.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { BookedEventsComponent } from "./booked-events/booked-events.component";
     UserspageComponent,
     HomepageComponent,
     BookedEventsComponent,
+    BookingFormComponent,
   ],
   imports: [
     CommonModule,

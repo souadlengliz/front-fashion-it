@@ -1,5 +1,6 @@
 import { Component, OnInit, ChangeDetectorRef } from "@angular/core";
 import { EventService } from "../services/event.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-homepage",
@@ -9,9 +10,11 @@ import { EventService } from "../services/event.service";
 export class HomepageComponent implements OnInit {
   constructor(
     private eventService: EventService,
-    private change: ChangeDetectorRef
+    private change: ChangeDetectorRef,
+    private router: Router
   ) {}
   cards = [];
+  //private userHasBooked: boolean[] = []];
   ngOnInit(): void {
     this.eventService.getAllEvents().subscribe((data) => {
       console.log(data);
@@ -26,10 +29,13 @@ export class HomepageComponent implements OnInit {
       this.cards = data;
     });
   }
-  bookEvent(id) {
-    this.eventService.bookEvent(id, localStorage.getItem("userId"));
-    this.refresh();
-    this.change.detectChanges();
+  bookEvent(id: string) {
+    // this.eventService.bookEvent(id, localStorage.getItem("userId"));
+    // this.refresh();
+    // this.change.detectChanges();
+    this.router.navigate(["/bookingform"], {
+      queryParams: { eventId: id },
+    });
   }
 }
 function delay(ms: number) {

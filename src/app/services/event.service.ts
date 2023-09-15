@@ -8,6 +8,14 @@ import { Event } from "../models/event";
 export class EventService {
   constructor(private http: HttpClient) {}
 
+  getEvent(eventId: any) {
+    return this.http.get<Event>("http://localhost:3000/event/" + eventId);
+  }
+  isBooked(user: string, event: string) {
+    return this.http.get<Event[]>(
+      "http://localhost:3000/bookEvent/" + user + "/" + event
+    );
+  }
   getBookedEvents(id) {
     return this.http.get<Event[]>("http://localhost:3000/event/user/" + id);
   }
@@ -35,9 +43,17 @@ export class EventService {
   }
 
   //book event by event id and user id
-  public bookEvent(eventId, userId) {
+  public bookEvent(eventId, userId, seatsTaken) {
+    console.log(eventId, userId, seatsTaken);
     this.http
-      .get("http://localhost:3000/bookEvent/" + eventId + "/" + userId)
+      .get(
+        "http://localhost:3000/bookEvent/" +
+          eventId +
+          "/" +
+          userId +
+          "/" +
+          seatsTaken
+      )
       .subscribe((data) => {
         console.log(data);
       });

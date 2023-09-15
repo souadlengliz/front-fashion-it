@@ -1,0 +1,79 @@
+/* booking-form.component.css */
+
+.booking-form {
+    max-width: 600px; /* Make the form wider */
+  margin: 0 auto;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f8f8f8;
+  text-align: center; /* Center text and form content */
+  position: relative; /* Position the form for overlay */
+
+  /* Set the height of the form */
+  height: 300px; /* You can adjust the height as needed */
+
+  /* Add the background image fully on the right side */
+  background-image: url('https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/fecc5355960773.599ae10bcdd0b.jpg'); /* Replace with your image URL */
+  background-size: cover;
+  background-position: right center; /* Position the image on the right side */
+  background-repeat: no-repeat;
+  }
+  
+  .booking-form .header {
+    //background-image: url('https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/fecc5355960773.599ae10bcdd0b.jpg');
+    color: #fff; /* Text color on the header background */
+  padding: 20px;
+  font-size: 1.5rem;
+  background: rgba(0, 0, 0, 0.3);
+  }
+  
+  .booking-form h2 {
+    margin: 0;
+  padding: 10px;
+  font-weight: bold;
+  text-align: center;
+  }
+  
+  .booking-form .event-cover {
+    display: none; /* Hide the cover image inside the form */
+  }
+  
+  .booking-form form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .booking-form .form-group {
+    margin-bottom: 10px;
+  }
+  
+  .booking-form label {
+    font-weight: bold;
+  }
+  
+  .booking-form input[type="text"],
+  .booking-form input[type="number"],
+  .booking-form input[type="checkbox"] {
+    width: 100%;
+    padding: 8px;
+    margin-top: 4px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+  
+  .booking-form button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  
+  .booking-form button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  

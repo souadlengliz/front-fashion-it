@@ -13,6 +13,7 @@ import { UserspageComponent } from "./userspage/userspage.component";
 import { RegisterPageComponent } from "./register-page/register-page.component";
 import { HomepageComponent } from "./homepage/homepage.component";
 import { BookedEventsComponent } from "./booked-events/booked-events.component";
+import { BookingFormComponent } from "./booking-form/booking-form.component";
 
 const routes: Routes = [
   {
@@ -27,6 +28,10 @@ const routes: Routes = [
   {
     path: "homepage",
     component: HomepageComponent,
+  },
+  {
+    path: "bookingform",
+    component: BookingFormComponent,
   },
   {
     path: "bookings",

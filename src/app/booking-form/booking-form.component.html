@@ -1,0 +1,88 @@
+<div class="col-md-12">
+  <form
+    class="form-horizontal"
+    id="TypeValidation"
+    [formGroup]="typeForm"
+    (ngSubmit)="onType()"
+  >
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title">Event :</h4>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <label class="col-sm-2 col-form-label"> Guest Name </label>
+          <div class="col-sm-7">
+            <div
+              class="form-group"
+              [ngClass]="{
+                'has-danger':
+                  ((focusTouched6 || type) && typeF.requiredText.errors) ||
+                  (typeF.requiredText.value != '' && typeF.requiredText.errors),
+                'has-success': !typeF.requiredText.errors
+              }"
+            >
+              <input
+                class="form-control"
+                name="required"
+                required=""
+                formControlName="requiredText"
+                (focus)="focusTouched6 = true"
+                type="text"
+              />
+              <label
+                class="error"
+                *ngIf="
+                  ((focusTouched6 || type) && typeF.requiredText.errors) ||
+                  (typeF.requiredText.value != '' && typeF.requiredText.errors)
+                "
+                >This field is required.</label
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <label class="col-sm-2 col-form-label">
+            Number of Seats (max {{ maxSeats }})</label
+          >
+          <div class="col-sm-7">
+            <div
+              class="form-group"
+              [ngClass]="{
+                'has-danger':
+                  ((focusTouched8 || type) && typeF.number.errors) ||
+                  (typeF.number.value != '' && typeF.number.errors),
+                'has-success': !typeF.number.errors
+              }"
+            >
+              <input
+                class="form-control"
+                name="number"
+                required=""
+                (focus)="focusTouched8 = true"
+                formControlName="number"
+                type="number"
+                [max]="maxSeats"
+                [min]="1"
+              />
+              <label
+                class="error"
+                *ngIf="
+                  ((focusTouched8 || type) && typeF.number.errors) ||
+                  (typeF.number.value != '' && typeF.number.errors)
+                "
+                >Please enter a valid number.</label
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer text-center">
+        <button class="btn btn-danger" (click)="submitBooking()" type="submit">
+          Finish
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
