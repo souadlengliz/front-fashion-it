@@ -1,17 +1,19 @@
-<div class="card-list">
-  <div class="card" *ngFor="let card of cards; index as j">
-    <img [src]="card.imageUrl" [alt]="card.title" class="card-img" />
-    <div class="card-content">
-      <h2 class="card-title">{{ card.name }}</h2>
-      <p class="card-text">{{ card.description }}</p>
-      <h2 class="card-seats">{{ card.availableSeats }}/{{ card.seats }}</h2>
+<div class="content">
+  <div class="card-list">
+    <div class="card" *ngFor="let card of cards; index as j">
+      <img [src]="card.imageUrl" [alt]="card.title" class="card-img" />
+      <div class="card-content">
+        <h2 class="card-title">{{ card.name }}</h2>
+        <p class="card-text">{{ card.description }}</p>
+        <h2 class="card-seats">{{ card.availableSeats }}/{{ card.seats }}</h2>
+      </div>
+      <button
+        class="btn btn-primary"
+        (click)="bookEvent(card._id)"
+        [disabled]="card.availableSeats === 0"
+      >
+        Book
+      </button>
     </div>
-    <button
-      class="btn btn-primary"
-      (click)="bookEvent(card._id)"
-      [disabled]="card.availableSeats === 0"
-    >
-      Book
-    </button>
   </div>
 </div>

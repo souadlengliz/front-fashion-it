@@ -156,7 +156,7 @@ export class BookingFormComponent implements OnInit {
         localStorage.getItem("userId"),
         this.typeForm.value.number
       );
-    this.router.navigate(["/homepage"]);
+    this.router.navigate(["/bookings"]);
   }
   //
 }

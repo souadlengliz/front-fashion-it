@@ -18,30 +18,29 @@ import { BookingFormComponent } from "./booking-form/booking-form.component";
 const routes: Routes = [
   {
     path: "",
-    redirectTo: "dashboard",
-    pathMatch: "full",
-  },
-  {
-    path: "loginpage",
-    component: LoginPageComponent,
-  },
-  {
-    path: "homepage",
-    component: HomepageComponent,
-  },
-  {
-    path: "bookingform",
-    component: BookingFormComponent,
-  },
-  {
-    path: "bookings",
-    component: BookedEventsComponent,
-  },
-
-  {
-    path: "",
     component: AdminLayoutComponent,
     children: [
+      {
+        path: "",
+        redirectTo: "dashboard",
+        pathMatch: "full",
+      },
+      {
+        path: "loginpage",
+        component: LoginPageComponent,
+      },
+      {
+        path: "homepage",
+        component: HomepageComponent,
+      },
+      {
+        path: "bookingform",
+        component: BookingFormComponent,
+      },
+      {
+        path: "bookings",
+        component: BookedEventsComponent,
+      },
       {
         path: "eventspage",
         component: EventsPageComponent,
