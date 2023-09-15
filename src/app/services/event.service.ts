@@ -6,11 +6,11 @@ import { Event } from "../models/event";
   providedIn: "root",
 })
 export class EventService {
-  getBooksEvents(id) {
-    return this.http.get<Event[]>("http://localhost:3000/event/user/" + id);
-  }
   constructor(private http: HttpClient) {}
 
+  getBookedEvents(id) {
+    return this.http.get<Event[]>("http://localhost:3000/event/user/" + id);
+  }
   searchEvents(query) {
     console.log(query);
     return this.http.get<Event[]>(
@@ -46,7 +46,9 @@ export class EventService {
   //cancel event by event id and user id
   public cancelEvent(eventId, userId) {
     this.http
-      .delete("http://localhost:3000/bookEvent/" + eventId + "/" + userId)
+      .delete(
+        "http://localhost:3000/bookEvent/delete/" + eventId + "/" + userId
+      )
       .subscribe((data) => {
         console.log(data);
       });

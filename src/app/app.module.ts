@@ -20,6 +20,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { EventFormComponent } from "./event-form/event-form.component";
 import { UserspageComponent } from "./userspage/userspage.component";
 import { HomepageComponent } from "./homepage/homepage.component";
+import { BookedEventsComponent } from "./booked-events/booked-events.component";
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { HomepageComponent } from "./homepage/homepage.component";
     EventFormComponent,
     UserspageComponent,
     HomepageComponent,
+    BookedEventsComponent,
   ],
   imports: [
     CommonModule,

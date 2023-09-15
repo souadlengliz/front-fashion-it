@@ -12,6 +12,7 @@ import { EventFormComponent } from "./event-form/event-form.component";
 import { UserspageComponent } from "./userspage/userspage.component";
 import { RegisterPageComponent } from "./register-page/register-page.component";
 import { HomepageComponent } from "./homepage/homepage.component";
+import { BookedEventsComponent } from "./booked-events/booked-events.component";
 
 const routes: Routes = [
   {
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path: "homepage",
     component: HomepageComponent,
+  },
+  {
+    path: "bookings",
+    component: BookedEventsComponent,
   },
 
   {
