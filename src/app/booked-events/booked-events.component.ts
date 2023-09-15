@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, OnInit } from "@angular/core";
 import { EventService } from "../services/event.service";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { Event } from "../models/event";
 
 @Component({
@@ -12,10 +12,14 @@ export class BookedEventsComponent implements OnInit {
   constructor(
     private eventsService: EventService,
     private change: ChangeDetectorRef,
-    private router: ActivatedRoute
+    private router: ActivatedRoute,
+    private router2: Router
   ) {}
   items: Event[] = [];
   ngOnInit(): void {
+    if (localStorage.getItem("userId") == null) {
+      this.router2.navigate(["/loginpage"]);
+    }
     this.refresh();
   }
   //function to detect whenever a query is sent as a parameter to the route and then search for it

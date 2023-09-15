@@ -17,6 +17,14 @@ import { BookingFormComponent } from "./booking-form/booking-form.component";
 
 const routes: Routes = [
   {
+    path: "loginpage",
+    component: LoginPageComponent,
+  },
+  {
+    path: "registerPage",
+    component: RegisterPageComponent,
+  },
+  {
     path: "",
     component: AdminLayoutComponent,
     children: [
@@ -25,10 +33,7 @@ const routes: Routes = [
         redirectTo: "dashboard",
         pathMatch: "full",
       },
-      {
-        path: "loginpage",
-        component: LoginPageComponent,
-      },
+
       {
         path: "homepage",
         component: HomepageComponent,

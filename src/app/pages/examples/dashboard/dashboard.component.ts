@@ -1,12 +1,12 @@
 import { Component, OnInit } from "@angular/core";
 import Chart from "chart.js";
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-
+import { HttpClient } from "@angular/common/http";
+import { Observable } from "rxjs";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-dashboard",
-  templateUrl: "dashboard.component.html"
+  templateUrl: "dashboard.component.html",
 })
 export class DashboardComponent implements OnInit {
   public canvas: any;
@@ -17,29 +17,34 @@ export class DashboardComponent implements OnInit {
   public clicked: boolean = true;
   public clicked1: boolean = false;
   public clicked2: boolean = false;
-  userCount : any ;
-  constructor(private http: HttpClient) {}
+  userCount: any;
+  constructor(private http: HttpClient, private router: Router) {}
 
   getUserData(): Observable<any> {
-    return this.http.get('http://localhost:3000/user');
+    return this.http.get("http://localhost:3000/user");
   }
-  
+
   ngOnInit() {
+    if (localStorage.getItem("userId") == null) {
+      this.router.navigate(["/loginpage"]);
+    }
+    console.log(localStorage.getItem("userId"));
+
     this.getUserData().subscribe(
       (result) => {
         // Assuming the result is an object with a property called 'users'
-         this.userCount = result.length; // Modify this according to the actual structure of your data
-      console.log('data : ',result);
+        this.userCount = result.length; // Modify this according to the actual structure of your data
+        console.log("data : ", result);
       },
       (error) => {
-        console.error('Error fetching user data:', error);
+        console.error("Error fetching user data:", error);
       }
     );
-  
+
     var gradientChartOptionsConfigurationWithTooltipBlue: any = {
       maintainAspectRatio: false,
       legend: {
-        display: false
+        display: false,
       },
 
       tooltips: {
@@ -50,7 +55,7 @@ export class DashboardComponent implements OnInit {
         xPadding: 12,
         mode: "nearest",
         intersect: 0,
-        position: "nearest"
+        position: "nearest",
       },
       responsive: true,
       scales: {
@@ -60,15 +65,15 @@ export class DashboardComponent implements OnInit {
             gridLines: {
               drawBorder: false,
               color: "rgba(29,140,248,0.0)",
-              zeroLineColor: "transparent"
+              zeroLineColor: "transparent",
             },
             ticks: {
               suggestedMin: 60,
               suggestedMax: 125,
               padding: 20,
-              fontColor: "#2380f7"
-            }
-          }
+              fontColor: "#2380f7",
+            },
+          },
         ],
 
         xAxes: [
@@ -77,21 +82,21 @@ export class DashboardComponent implements OnInit {
             gridLines: {
               drawBorder: false,
               color: "rgba(29,140,248,0.1)",
-              zeroLineColor: "transparent"
+              zeroLineColor: "transparent",
             },
             ticks: {
               padding: 20,
-              fontColor: "#2380f7"
-            }
-          }
-        ]
-      }
+              fontColor: "#2380f7",
+            },
+          },
+        ],
+      },
     };
 
     var gradientChartOptionsConfigurationWithTooltipPurple: any = {
       maintainAspectRatio: false,
       legend: {
-        display: false
+        display: false,
       },
 
       tooltips: {
@@ -102,7 +107,7 @@ export class DashboardComponent implements OnInit {
         xPadding: 12,
         mode: "nearest",
         intersect: 0,
-        position: "nearest"
+        position: "nearest",
       },
       responsive: true,
       scales: {
@@ -112,15 +117,15 @@ export class DashboardComponent implements OnInit {
             gridLines: {
               drawBorder: false,
               color: "rgba(29,140,248,0.0)",
-              zeroLineColor: "transparent"
+              zeroLineColor: "transparent",
             },
             ticks: {
               suggestedMin: 60,
               suggestedMax: 125,
               padding: 20,
-              fontColor: "#9a9a9a"
-            }
-          }
+              fontColor: "#9a9a9a",
+            },
+          },
         ],
 
         xAxes: [
@@ -129,21 +134,21 @@ export class DashboardComponent implements OnInit {
             gridLines: {
               drawBorder: false,
               color: "rgba(225,78,202,0.1)",
-              zeroLineColor: "transparent"
+              zeroLineColor: "transparent",
             },
             ticks: {
               padding: 20,
-              fontColor: "#9a9a9a"
-            }
-          }
-        ]
-      }
+              fontColor: "#9a9a9a",
+            },
+          },
+        ],
+      },
     };
 
     var gradientChartOptionsConfigurationWithTooltipRed: any = {
       maintainAspectRatio: false,
       legend: {
-        display: false
+        display: false,
       },
 
       tooltips: {
@@ -154,7 +159,7 @@ export class DashboardComponent implements OnInit {
         xPadding: 12,
         mode: "nearest",
         intersect: 0,
-        position: "nearest"
+        position: "nearest",
       },
       responsive: true,
       scales: {
@@ -164,15 +169,15 @@ export class DashboardComponent implements OnInit {
             gridLines: {
               drawBorder: false,
               color: "rgba(29,140,248,0.0)",
-              zeroLineColor: "transparent"
+              zeroLineColor: "transparent",
             },
             ticks: {
               suggestedMin: 60,
               suggestedMax: 125,
               padding: 20,
-              fontColor: "#9a9a9a"
-            }
-          }
+              fontColor: "#9a9a9a",
+            },
+          },
         ],
 
         xAxes: [
@@ -181,21 +186,21 @@ export class DashboardComponent implements OnInit {
             gridLines: {
               drawBorder: false,
               color: "rgba(233,32,16,0.1)",
-              zeroLineColor: "transparent"
+              zeroLineColor: "transparent",
             },
             ticks: {
               padding: 20,
-              fontColor: "#9a9a9a"
-            }
-          }
-        ]
-      }
+              fontColor: "#9a9a9a",
+            },
+          },
+        ],
+      },
     };
 
     var gradientChartOptionsConfigurationWithTooltipOrange: any = {
       maintainAspectRatio: false,
       legend: {
-        display: false
+        display: false,
       },
 
       tooltips: {
@@ -206,7 +211,7 @@ export class DashboardComponent implements OnInit {
         xPadding: 12,
         mode: "nearest",
         intersect: 0,
-        position: "nearest"
+        position: "nearest",
       },
       responsive: true,
       scales: {
@@ -216,15 +221,15 @@ export class DashboardComponent implements OnInit {
             gridLines: {
               drawBorder: false,
               color: "rgba(29,140,248,0.0)",
-              zeroLineColor: "transparent"
+              zeroLineColor: "transparent",
             },
             ticks: {
               suggestedMin: 50,
               suggestedMax: 110,
               padding: 20,
-              fontColor: "#ff8a76"
-            }
-          }
+              fontColor: "#ff8a76",
+            },
+          },
         ],
 
         xAxes: [
@@ -233,21 +238,21 @@ export class DashboardComponent implements OnInit {
             gridLines: {
               drawBorder: false,
               color: "rgba(220,53,69,0.1)",
-              zeroLineColor: "transparent"
+              zeroLineColor: "transparent",
             },
             ticks: {
               padding: 20,
-              fontColor: "#ff8a76"
-            }
-          }
-        ]
-      }
+              fontColor: "#ff8a76",
+            },
+          },
+        ],
+      },
     };
 
     var gradientChartOptionsConfigurationWithTooltipGreen: any = {
       maintainAspectRatio: false,
       legend: {
-        display: false
+        display: false,
       },
 
       tooltips: {
@@ -258,7 +263,7 @@ export class DashboardComponent implements OnInit {
         xPadding: 12,
         mode: "nearest",
         intersect: 0,
-        position: "nearest"
+        position: "nearest",
       },
       responsive: true,
       scales: {
@@ -268,15 +273,15 @@ export class DashboardComponent implements OnInit {
             gridLines: {
               drawBorder: false,
               color: "rgba(29,140,248,0.0)",
-              zeroLineColor: "transparent"
+              zeroLineColor: "transparent",
             },
             ticks: {
               suggestedMin: 50,
               suggestedMax: 125,
               padding: 20,
-              fontColor: "#9e9e9e"
-            }
-          }
+              fontColor: "#9e9e9e",
+            },
+          },
         ],
 
         xAxes: [
@@ -285,21 +290,21 @@ export class DashboardComponent implements OnInit {
             gridLines: {
               drawBorder: false,
               color: "rgba(0,242,195,0.1)",
-              zeroLineColor: "transparent"
+              zeroLineColor: "transparent",
             },
             ticks: {
               padding: 20,
-              fontColor: "#9e9e9e"
-            }
-          }
-        ]
-      }
+              fontColor: "#9e9e9e",
+            },
+          },
+        ],
+      },
     };
 
     var gradientBarChartConfiguration: any = {
       maintainAspectRatio: false,
       legend: {
-        display: false
+        display: false,
       },
 
       tooltips: {
@@ -310,7 +315,7 @@ export class DashboardComponent implements OnInit {
         xPadding: 12,
         mode: "nearest",
         intersect: 0,
-        position: "nearest"
+        position: "nearest",
       },
       responsive: true,
       scales: {
@@ -319,15 +324,15 @@ export class DashboardComponent implements OnInit {
             gridLines: {
               drawBorder: false,
               color: "rgba(29,140,248,0.1)",
-              zeroLineColor: "transparent"
+              zeroLineColor: "transparent",
             },
             ticks: {
               suggestedMin: 60,
               suggestedMax: 120,
               padding: 20,
-              fontColor: "#9e9e9e"
-            }
-          }
+              fontColor: "#9e9e9e",
+            },
+          },
         ],
 
         xAxes: [
@@ -335,15 +340,15 @@ export class DashboardComponent implements OnInit {
             gridLines: {
               drawBorder: false,
               color: "rgba(29,140,248,0.1)",
-              zeroLineColor: "transparent"
+              zeroLineColor: "transparent",
             },
             ticks: {
               padding: 20,
-              fontColor: "#9e9e9e"
-            }
-          }
-        ]
-      }
+              fontColor: "#9e9e9e",
+            },
+          },
+        ],
+      },
     };
 
     this.canvas = document.getElementById("chartLineRed");
@@ -373,15 +378,15 @@ export class DashboardComponent implements OnInit {
           pointHoverRadius: 4,
           pointHoverBorderWidth: 15,
           pointRadius: 4,
-          data: [80, 100, 70, 80, 120, 80]
-        }
-      ]
+          data: [80, 100, 70, 80, 120, 80],
+        },
+      ],
     };
 
     var myChart = new Chart(this.ctx, {
       type: "line",
       data: data,
-      options: gradientChartOptionsConfigurationWithTooltipRed
+      options: gradientChartOptionsConfigurationWithTooltipRed,
     });
 
     this.canvas = document.getElementById("chartLineGreen");
@@ -411,15 +416,15 @@ export class DashboardComponent implements OnInit {
           pointHoverRadius: 4,
           pointHoverBorderWidth: 15,
           pointRadius: 4,
-          data: [90, 27, 60, 12, 80]
-        }
-      ]
+          data: [90, 27, 60, 12, 80],
+        },
+      ],
     };
 
     var myChart = new Chart(this.ctx, {
       type: "line",
       data: data,
-      options: gradientChartOptionsConfigurationWithTooltipGreen
+      options: gradientChartOptionsConfigurationWithTooltipGreen,
     });
 
     var chart_labels = [
@@ -434,12 +439,12 @@ export class DashboardComponent implements OnInit {
       "SEP",
       "OCT",
       "NOV",
-      "DEC"
+      "DEC",
     ];
     this.datasets = [
       [100, 70, 90, 70, 85, 60, 75, 60, 90, 80, 110, 100],
       [80, 120, 105, 110, 95, 105, 90, 100, 80, 95, 70, 120],
-      [60, 80, 65, 130, 80, 105, 90, 130, 70, 115, 60, 130]
+      [60, 80, 65, 130, 80, 105, 90, 130, 70, 115, 60, 130],
     ];
     this.data = this.datasets[0];
 
@@ -472,11 +477,11 @@ export class DashboardComponent implements OnInit {
             pointHoverRadius: 4,
             pointHoverBorderWidth: 15,
             pointRadius: 4,
-            data: this.data
-          }
-        ]
+            data: this.data,
+          },
+        ],
       },
-      options: gradientChartOptionsConfigurationWithTooltipRed
+      options: gradientChartOptionsConfigurationWithTooltipRed,
     };
     this.myChartData = new Chart(this.ctx, config);
 
@@ -492,7 +497,7 @@ export class DashboardComponent implements OnInit {
       type: "bar",
       responsive: true,
       legend: {
-        display: false
+        display: false,
       },
       data: {
         labels: ["USA", "GER", "AUS", "UK", "RO", "BR"],
@@ -506,11 +511,11 @@ export class DashboardComponent implements OnInit {
             borderWidth: 2,
             borderDash: [],
             borderDashOffset: 0.0,
-            data: [53, 20, 10, 80, 100, 45]
-          }
-        ]
+            data: [53, 20, 10, 80, 100, 45],
+          },
+        ],
       },
-      options: gradientBarChartConfiguration
+      options: gradientBarChartConfiguration,
     });
   }
   public updateOptions() {

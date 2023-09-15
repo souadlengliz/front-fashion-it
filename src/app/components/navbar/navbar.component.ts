@@ -164,4 +164,9 @@ export class NavbarComponent implements OnInit, OnDestroy {
       queryParams: { query: this.searchInput.value },
     });
   }
+  logout() {
+    console.log("logging out");
+    localStorage.removeItem("userId");
+    this.router.navigate(["/loginpage"]);
+  }
 }

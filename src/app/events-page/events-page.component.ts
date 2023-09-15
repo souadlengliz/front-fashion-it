@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectorRef } from "@angular/core";
 import { EventService } from "../services/event.service";
 import { Event } from "../models/event";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { Subscription } from "rxjs";
 
 @Component({
@@ -15,7 +15,8 @@ export class EventsPageComponent implements OnInit {
   constructor(
     private eventsService: EventService,
     private change: ChangeDetectorRef,
-    private router: ActivatedRoute
+    private router: ActivatedRoute,
+    private router2: Router
   ) {
     this.queryParamsSubscription = this.router.queryParams.subscribe(
       (queryParams) => {
@@ -38,6 +39,9 @@ export class EventsPageComponent implements OnInit {
   }
   items: Event[] = [];
   ngOnInit(): void {
+    if (localStorage.getItem("userId") == null) {
+      this.router2.navigate(["/loginpage"]);
+    }
     this.refresh();
   }
   //function to detect whenever a query is sent as a parameter to the route and then search for it

@@ -16,6 +16,9 @@ export class HomepageComponent implements OnInit {
   cards = [];
   //private userHasBooked: boolean[] = []];
   ngOnInit(): void {
+    if (localStorage.getItem("userId") == null) {
+      this.router.navigate(["/loginpage"]);
+    }
     this.eventService.getAllEvents().subscribe((data) => {
       console.log(data);
       this.cards = data;

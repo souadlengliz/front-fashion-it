@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { UserserviceService } from "../services/userservice.service";
 import { ChangeDetectorRef } from "@angular/core";
 import { users } from "../models/users";
+import { Router } from "@angular/router";
 @Component({
   selector: "app-userspage",
   templateUrl: "./userspage.component.html",
@@ -10,10 +11,14 @@ import { users } from "../models/users";
 export class UserspageComponent implements OnInit {
   constructor(
     private userService: UserserviceService,
-    private change: ChangeDetectorRef
+    private change: ChangeDetectorRef,
+    private router: Router
   ) {}
   items: users[] = [];
   ngOnInit(): void {
+    if (localStorage.getItem("userId") == null) {
+      this.router.navigate(["/loginpage"]);
+    }
     this.refresh();
   }
   addUser(Users) {

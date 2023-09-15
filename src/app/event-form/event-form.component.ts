@@ -15,7 +15,11 @@ export class EventFormComponent implements OnInit {
   location = new FormControl("");
   seats = new FormControl("");
   constructor(private eventService: EventService, private router: Router) {}
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (localStorage.getItem("userId") == null) {
+      this.router.navigate(["/loginpage"]);
+    }
+  }
   submitEvent() {
     const event = {
       name: this.name.value,

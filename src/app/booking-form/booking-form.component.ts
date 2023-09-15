@@ -27,6 +27,9 @@ export class BookingFormComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    if (localStorage.getItem("userId") == null) {
+      this.router.navigate(["/loginpage"]);
+    }
     this.queryParamsSubscription = this.route.queryParams.subscribe(
       (queryParams) => {
         // Perform actions when query parameters change
